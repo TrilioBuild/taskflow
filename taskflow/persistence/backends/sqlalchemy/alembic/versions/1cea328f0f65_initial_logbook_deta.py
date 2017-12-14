@@ -30,6 +30,7 @@ import logging
 
 from alembic import op
 import sqlalchemy as sa
+import sqlalchemy.dialects.mysql as mysql
 
 
 LOG = logging.getLogger(__name__)
@@ -109,7 +110,7 @@ def upgrade():
                     sa.Column('parent_uuid', sa.String(length=64)),
                     sa.Column('meta', sa.Text(), nullable=True),
                     sa.Column('name', sa.String(length=255), nullable=True),
-                    sa.Column('results', sa.Text(), nullable=True),
+                    sa.Column('results', mysql.MEDIUMTEXT(), nullable=True),
                     sa.Column('version', sa.String(length=64), nullable=True),
                     sa.Column('stacktrace', sa.Text(), nullable=True),
                     sa.Column('exception', sa.Text(), nullable=True),
